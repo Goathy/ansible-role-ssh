@@ -8,6 +8,10 @@ Subsystem sftp /usr/libexec/openssh/sftp-server
 Ciphers {{ sshd_cipher_algorithms | join(',') }}
 {% endif %}
 
+{% if sshd_key_exchange_algorithms|length >0 %}
+KexAlgorithms {{ sshd_key_exchange_algorithms | join(',') }}
+{% endif %}
+
 PermitRootLogin without-password
 PubkeyAuthentication yes
 AuthenticationMethods publickey

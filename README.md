@@ -20,6 +20,16 @@ sshd_listen_address:
 # Cipher algorithms approved by FIPS 140
 sshd_cipher_algortihmss: ["aes256-gcm@openssh.com", "aes128-gcm@openssh.com", "aes256-ctr", "aes192-ctr", "aes128-ctr"]
 
+# Key exchange algorithms approved by FIPS 140
+sshd_key_exchange_algorithms: 
+  - "ecdh-sha2-nistp256"
+  - "ecdh-sha2-nistp384"
+  - "ecdh-sha2-nistp521"
+  - "diffie-hellman-group-exchange-sha256"
+  - "diffie-hellman-group16-sha512"
+  - "diffie-hellman-group18-sha512"
+  - "diffie-hellman-group14-sha256"
+
 ssh_deny_users: []
 ssh_allow_users: [root]
 ssh_deny_groups: []
