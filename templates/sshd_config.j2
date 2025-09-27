@@ -12,6 +12,10 @@ Ciphers {{ sshd_cipher_algorithms | join(',') }}
 KexAlgorithms {{ sshd_key_exchange_algorithms | join(',') }}
 {% endif %}
 
+{% if sshd_mac_algorithms|length >0 %}
+MACs {{ sshd_mac_algorithms | join(',') }}
+{% endif %}
+
 PermitRootLogin without-password
 PubkeyAuthentication yes
 AuthenticationMethods publickey
