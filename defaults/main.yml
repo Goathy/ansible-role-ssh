@@ -1,0 +1,9 @@
+sshd_protocol: [2]
+
+sshd_listen_address:
+  - { address: "0.0.0.0", port: 22 }
+
+ssh_deny_users: []
+ssh_allow_users: [root]
+ssh_deny_groups: []
+ssh_allow_groups: [root, wheel]

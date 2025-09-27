@@ -1,0 +1,58 @@
+---
+- name: update packages
+  ansible.builtin.dnf:
+    update_only: true
+    security: true
+    state: latest
+
+- name: install required packages
+  ansible.builtin.dnf:
+    name:
+      - epel-release
+      - libselinux-python3
+      - policycoreutils-python-utils
+    state: present
+
+- name: create /etc/ssh/authorized_keys.d directory
+  ansible.builtin.file:
+    path: "/etc/ssh/authorized_keys.d/"
+    state: directory
+
+- name: check if root authorized_keys exists
+  register: stats
+  ansible.builtin.stat:
+    path: "/root/.ssh/authorized_keys"
+
+- name: move root authorized_keys file
+  ansible.builtin.copy:
+    mode: 0600
+    group: root
+    owner: root
+    remote_src: true
+    src: "{{ stats.stat.path }}"
+    dest: "/etc/ssh/authorized_keys.d/root"
+  when: "stats is defined and stats.stat.exists"
+
+- name: remove root authorized_keys file
+  ansible.builtin.file:
+    path: "{{ stats.stat.path }}"
+    state: absent
+  when: "stats is defined and stats.stat.exists"
+
+- name: configure selinux
+  community.general.seport:
+    ports: "{{ sshd_listen_address | map(attribute='port') }}"
+    proto: tcp
+    setype: ssh_port_t
+    state: present
+
+- name: update sshd_config
+  ansible.builtin.template:
+    src: "templates/sshd_config.j2"
+    dest: "/etc/ssh/sshd_config"
+    mode: 0600
+    group: root
+    owner: root
+    validate: "/usr/sbin/sshd -T -f %s"
+  notify: restart sshd
+

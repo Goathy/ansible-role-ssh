@@ -1,0 +1,15 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: ssh
+  author: goathy
+  description: Configure sshd server with Ansible
+  issue_tracker_url: https://github.com/Goathy/ansible-role-ssh/issues/tracker
+  license: MIT
+  min_ansible_version: 2.1
+  galaxy_tags:
+    - hardening
+    - ssh
+    - sshd
+    - remote
