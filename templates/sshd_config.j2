@@ -4,6 +4,10 @@
 Protocol {{ sshd_protocol | join(',') }}
 Subsystem sftp /usr/libexec/openssh/sftp-server
 
+{% if sshd_cipher_algorithms|length >0 %}
+Ciphers {{ sshd_cipher_algorithms | join(',') }}
+{% endif %}
+
 PermitRootLogin without-password
 PubkeyAuthentication yes
 AuthenticationMethods publickey

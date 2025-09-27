@@ -1,7 +1,10 @@
+---
 sshd_protocol: [2]
 
 sshd_listen_address:
   - { address: "0.0.0.0", port: 22 }
+
+sshd_cipher_algorithms: ["aes256-gcm@openssh.com", "aes128-gcm@openssh.com", "aes256-ctr", "aes192-ctr", "aes128-ctr"]
 
 ssh_deny_users: []
 ssh_allow_users: [root]
