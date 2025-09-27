@@ -1,5 +1,5 @@
 # Ansible Role: SSH
-Configure `sshd` server according to [CISOfy Software - Lynis](https://cisofy.com/lynis/) benchmark.
+Configure `sshd` server according to [CISOfy Software - Lynis](https://cisofy.com/lynis/) and [CIS](https://www.cisecurity.org/cis-benchmarks) benchmarks.
 
 > [!CAUTION]
 > This role is in preview state. It will includes breaking changes without further notice.
