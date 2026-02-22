@@ -55,4 +55,4 @@ License
 Author Information
 ------------------
 
-This role was created in 2014 by [Jakub Gałecki](https://github.com/Goathy).
+This role was created in 2025 by [Jakub Gałecki](https://github.com/Goathy).
