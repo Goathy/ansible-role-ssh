@@ -4,6 +4,7 @@
     update_only: true
     security: true
     state: latest
+  when: ansible_selinux.status == "enabled"
 
 - name: install required packages
   ansible.builtin.dnf:
@@ -12,6 +13,7 @@
       - libselinux-python3
       - policycoreutils-python-utils
     state: present
+  when: ansible_selinux.status == "enabled"
 
 - name: create /etc/ssh/authorized_keys.d directory
   ansible.builtin.file:
@@ -45,6 +47,7 @@
     proto: tcp
     setype: ssh_port_t
     state: present
+  when: ansible_selinux.status == "enabled"
 
 - name: update sshd_config
   ansible.builtin.template:
