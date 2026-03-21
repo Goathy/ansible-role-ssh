@@ -1,20 +1,4 @@
 ---
-- name: update packages
-  ansible.builtin.dnf:
-    update_only: true
-    security: true
-    state: latest
-  when: ansible_selinux.status == "enabled"
-
-- name: install required packages
-  ansible.builtin.dnf:
-    name:
-      - epel-release
-      - libselinux-python3
-      - policycoreutils-python-utils
-    state: present
-  when: ansible_selinux.status == "enabled"
-
 - name: create /etc/ssh/authorized_keys.d directory
   ansible.builtin.file:
     path: "/etc/ssh/authorized_keys.d/"
@@ -40,14 +24,6 @@
     path: "{{ stats.stat.path }}"
     state: absent
   when: "stats is defined and stats.stat.exists"
-
-- name: configure selinux
-  community.general.seport:
-    ports: "{{ sshd_listen_address | map(attribute='port') }}"
-    proto: tcp
-    setype: ssh_port_t
-    state: present
-  when: ansible_selinux.status == "enabled"
 
 - name: update sshd_config
   ansible.builtin.template:

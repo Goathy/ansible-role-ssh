@@ -1,6 +1,5 @@
 ---
-dependencies:
-  - role: "community"
+dependencies: []
 
 galaxy_info:
   role_name: "ssh"
