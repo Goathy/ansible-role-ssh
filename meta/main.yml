@@ -1,5 +1,6 @@
 ---
-dependencies: []
+dependencies:
+  - role: "community.general.seport"
 
 galaxy_info:
   role_name: ssh
