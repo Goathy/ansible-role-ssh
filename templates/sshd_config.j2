@@ -47,3 +47,7 @@ DenyGroups {{ ssh_deny_groups | join(' ') }}
 {% if ssh_allow_groups | length > 0 %}
 AllowGroups {{ ssh_allow_groups | join(' ') }}
 {% endif %}
+
+{% if sshd_accept_envs | length > 0 %}
+AcceptEnv {{ sshd_accept_envs | join(' ') }}
+{% endif %}

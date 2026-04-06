@@ -23,3 +23,5 @@ ssh_deny_groups: []
 ssh_allow_groups: [root, wheel]
 
 ssh_authorized_keys_files: ["/home/%u/.ssh/authorized_keys"]
+
+sshd_accept_envs: []
