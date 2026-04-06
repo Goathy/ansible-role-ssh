@@ -4,15 +4,15 @@
 Protocol {{ sshd_protocol | join(',') }}
 Subsystem sftp internal-sftp
 
-{% if sshd_cipher_algorithms|length >0 %}
+{% if sshd_cipher_algorithms | length > 0 %}
 Ciphers {{ sshd_cipher_algorithms | join(',') }}
 {% endif %}
 
-{% if sshd_key_exchange_algorithms|length >0 %}
+{% if sshd_key_exchange_algorithms | length > 0 %}
 KexAlgorithms {{ sshd_key_exchange_algorithms | join(',') }}
 {% endif %}
 
-{% if sshd_mac_algorithms|length >0 %}
+{% if sshd_mac_algorithms | length > 0 %}
 MACs {{ sshd_mac_algorithms | join(',') }}
 {% endif %}
 
@@ -35,15 +35,15 @@ ClientAliveCountMax 2
 AllowTcpForwarding no
 AuthorizedKeysFile /etc/ssh/authorized_keys.d/%u
 
-{% if ssh_deny_users|length > 0 %}
+{% if ssh_deny_users | length > 0 %}
 DenyUsers {{ ssh_deny_users | join(' ') }}
 {% endif %}
-{% if ssh_allow_users|length > 0 %}
+{% if ssh_allow_users | length > 0 %}
 AllowUsers {{ ssh_allow_users | join(' ') }}
 {% endif %}
-{% if ssh_deny_groups|length > 0 %}
+{% if ssh_deny_groups | length > 0 %}
 DenyGroups {{ ssh_deny_groups | join(' ') }}
 {% endif %}
-{% if ssh_allow_groups|length > 0 %}
+{% if ssh_allow_groups | length > 0 %}
 AllowGroups {{ ssh_allow_groups | join(' ') }}
 {% endif %}
