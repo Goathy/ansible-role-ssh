@@ -33,7 +33,7 @@ MaxSessions 1
 LogLevel VERBOSE
 ClientAliveCountMax 2
 AllowTcpForwarding no
-AuthorizedKeysFile /etc/ssh/authorized_keys.d/%u
+AuthorizedKeysFile {{ ssh_authorized_keys_files | join(' ') }}
 
 {% if ssh_deny_users | length > 0 %}
 DenyUsers {{ ssh_deny_users | join(' ') }}
