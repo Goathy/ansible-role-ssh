@@ -18,7 +18,7 @@ sshd_listen_address:
   - { address: "0.0.0.0", port: 22 }
 
 # Cipher algorithms approved by FIPS 140
-sshd_cipher_algortihmss: ["aes256-gcm@openssh.com", "aes128-gcm@openssh.com", "aes256-ctr", "aes192-ctr", "aes128-ctr"]
+sshd_cipher_algorithms: ["aes256-gcm@openssh.com", "aes128-gcm@openssh.com", "aes256-ctr", "aes192-ctr", "aes128-ctr"]
 
 # Key exchange algorithms approved by FIPS 140
 sshd_key_exchange_algorithms: 
@@ -33,10 +33,16 @@ sshd_key_exchange_algorithms:
 # MACs algorithms approved by FIPS 140
 sshd_mac_algorithms: ["hmac-sha1", "hmac-sha2-256", "hmac-sha2-512"]
 
-ssh_deny_users: []
-ssh_allow_users: [root]
-ssh_deny_groups: []
-ssh_allow_groups: [root, wheel]
+sshs_deny_users: []
+sshs_allow_users: [root]
+sshs_deny_groups: []
+sshs_allow_groups: [root, wheel]
+
+sshs_authorized_keys_files: ["/home/%u/.ssh/authorized_keys"]
+
+sshd_accept_envs: []
+
+sshd_config_backup: false
 ```
 
 Dependencies

@@ -25,3 +25,5 @@ sshs_allow_groups: [root, wheel]
 sshs_authorized_keys_files: ["/home/%u/.ssh/authorized_keys"]
 
 sshd_accept_envs: []
+
+sshd_config_backup: false
