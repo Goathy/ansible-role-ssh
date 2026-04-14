@@ -17,12 +17,12 @@ sshd_key_exchange_algorithms:
 
 sshd_mac_algorithms: ["hmac-sha1", "hmac-sha2-256", "hmac-sha2-512"]
 
-sshs_deny_users: []
-sshs_allow_users: [root]
-sshs_deny_groups: []
-sshs_allow_groups: [root, wheel]
+sshd_deny_users: []
+sshd_allow_users: [root]
+sshd_deny_groups: []
+sshd_allow_groups: [root, wheel]
 
-sshs_authorized_keys_files: ["/home/%u/.ssh/authorized_keys"]
+sshd_authorized_keys_files: ["/home/%u/.ssh/authorized_keys"]
 
 sshd_accept_envs: []
 
